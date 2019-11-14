@@ -32,7 +32,7 @@ app.get("*", (req, res) => {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://localhost/curnonwatch", (err)=>{
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/curnonwatch", (err)=>{
     if(err) console.log(err);
     else console.log("Database connect Successfully");
 });
