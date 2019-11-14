@@ -4,6 +4,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const ApiRouter = require("./router/api");
 const app = express();
+var path = require('path');
 
 // app.use((req,res,next)=>{
 //     next(); // cho chuong trinh tiep tuc di
@@ -21,10 +22,10 @@ app.use(function (req, res, next) {
 app.options("*", cors());
 
 /*Adds the react production build to serve react requests*/
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "./public")));
 /*React root*/
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/index.html"));
+    res.sendFile(path.join(__dirname + "./public/index.html"));
 });
 
 // app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
